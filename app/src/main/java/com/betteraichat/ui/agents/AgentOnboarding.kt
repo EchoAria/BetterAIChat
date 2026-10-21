@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -127,8 +128,8 @@ fun AgentOnboardingDialog(
         text = {
             Column(
                 modifier = Modifier
+                    .heightIn(max = 440.dp)
                     .verticalScroll(rememberScrollState())
-                    .height(440.dp)
             ) {
                 Text(
                     stringResource(R.string.agent_step, step + 1, 4),
@@ -210,7 +211,8 @@ fun AgentOnboardingDialog(
                             onValueChange = { baseUrl = it },
                             modifier = Modifier.fillMaxWidth(),
                             label = { Text(stringResource(R.string.agent_base_url)) },
-                            singleLine = true
+                            minLines = 2,
+                            maxLines = 3
                         )
                         Spacer(Modifier.height(12.dp))
                         Button(onClick = ::probe, enabled = !probing, modifier = Modifier.fillMaxWidth()) {

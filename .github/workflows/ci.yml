@@ -40,3 +40,17 @@ jobs:
 
       - name: Assemble debug APKs (full + lite)
         run: ./gradlew :app:assembleFullDebug :app:assembleLiteDebug --stacktrace
+
+      - name: Upload full debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: BetterAIChat-full-debug
+          path: app/build/outputs/apk/full/debug/*.apk
+          if-no-files-found: error
+
+      - name: Upload lite debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: BetterAIChat-lite-debug
+          path: app/build/outputs/apk/lite/debug/*.apk
+          if-no-files-found: error
